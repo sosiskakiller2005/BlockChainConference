@@ -40,7 +40,7 @@ namespace BlockChainConference.AppData
                     List<Organizer> organizers = _context.Organizer.ToList();
                     foreach (Organizer org in organizers) 
                     {
-                        if (login == org.Email && password == org.Password)
+                        if (login == org.Id.ToString() && password == org.Password)
                         {
                             selectedOrg = org;
                             return true;
@@ -57,7 +57,7 @@ namespace BlockChainConference.AppData
                     List<Moderator> moderators = _context.Moderator.ToList();
                     foreach (Moderator moderator in moderators)
                     {
-                        if (login == moderator.Email && password == moderator.Password)
+                        if (login == moderator.Id.ToString() && password == moderator.Password)
                         {
                             selectedModer = moderator;
                             return true;
@@ -74,7 +74,7 @@ namespace BlockChainConference.AppData
                     List<Jury> juries = _context.Jury.ToList();
                     foreach (Jury jury in juries)
                     {
-                        if (login == jury.Email && password == jury.Email)
+                        if (login == jury.Id.ToString() && password == jury.Email)
                         {
                             selectedJury= jury; 
                             return true;
@@ -91,7 +91,7 @@ namespace BlockChainConference.AppData
                     List<Participant> participants = _context.Participant.ToList();
                     foreach (Participant participant in participants)
                     {
-                        if (login == participant.Email && password == participant.Email)
+                        if (login == participant.Id.ToString() && password == participant.Password)
                         {
                             selectedPart = participant;
                             return true;
@@ -118,6 +118,11 @@ namespace BlockChainConference.AppData
             }
 
         }
+
+        /// <summary>
+        /// Генерирует текст капчи.
+        /// </summary>
+        /// <returns></returns>
         public static string GenerateCaptcha()
         {
             List<char> chars = new List<char> { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',

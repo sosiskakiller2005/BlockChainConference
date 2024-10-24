@@ -48,7 +48,8 @@
           <Property Name="Days" Type="int" Nullable="false" />
           <Property Name="CityId" Type="int" Nullable="false" />
           <Property Name="OrganizerId" Type="int" />
-          <Property Name="DirectionId" Type="int" />
+          <Property Name="DirectionId" Type="int" Nullable="false" />
+          <Property Name="Logo" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="EventParticipant">
           <Key>
@@ -165,7 +166,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Event_Direction">
-          <End Role="Direction" Type="Self.Direction" Multiplicity="0..1" />
+          <End Role="Direction" Type="Self.Direction" Multiplicity="1" />
           <End Role="Event" Type="Self.Event" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Direction">
@@ -439,9 +440,9 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Event" Relationship="Self.FK_Event_Direction" FromRole="Direction" ToRole="Event" />
           <NavigationProperty Name="Jury" Relationship="Self.FK_Jury_Direction" FromRole="Direction" ToRole="Jury" />
           <NavigationProperty Name="Moderator" Relationship="Self.FK_Moderator_Direction" FromRole="Direction" ToRole="Moderator" />
-          <NavigationProperty Name="Event" Relationship="user22Model.FK_Event_Direction" FromRole="Direction" ToRole="Event" />
         </EntityType>
         <EntityType Name="Event">
           <Key>
@@ -453,13 +454,14 @@
           <Property Name="Days" Type="Int32" Nullable="false" />
           <Property Name="CityId" Type="Int32" Nullable="false" />
           <Property Name="OrganizerId" Type="Int32" />
+          <Property Name="DirectionId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Activity" Relationship="Self.FK_Activity_Event" FromRole="Event" ToRole="Activity" />
           <NavigationProperty Name="City" Relationship="Self.FK_Event_City" FromRole="Event" ToRole="City" />
+          <NavigationProperty Name="Direction" Relationship="Self.FK_Event_Direction" FromRole="Event" ToRole="Direction" />
           <NavigationProperty Name="Organizer" Relationship="Self.FK_Event_Organizer" FromRole="Event" ToRole="Organizer" />
           <NavigationProperty Name="EventParticipant" Relationship="Self.FK_EventParticipant_Event" FromRole="Event" ToRole="EventParticipant" />
           <NavigationProperty Name="Moderator" Relationship="Self.FK_Moderator_Event" FromRole="Event" ToRole="Moderator" />
-          <Property Name="DirectionId" Type="Int32" />
-          <NavigationProperty Name="Direction" Relationship="user22Model.FK_Event_Direction" FromRole="Event" ToRole="Direction" />
+          <Property Name="Logo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="EventParticipant">
           <Key>
@@ -628,6 +630,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Event_Direction">
+          <End Role="Direction" Type="Self.Direction" Multiplicity="1" />
+          <End Role="Event" Type="Self.Event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Direction">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Event">
+              <PropertyRef Name="DirectionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Jury_Direction">
           <End Role="Direction" Type="Self.Direction" Multiplicity="1" />
           <End Role="Jury" Type="Self.Jury" Multiplicity="*" />
@@ -772,6 +786,10 @@
             <End Role="Country" EntitySet="Country" />
             <End Role="Participant" EntitySet="Participant" />
           </AssociationSet>
+          <AssociationSet Name="FK_Event_Direction" Association="Self.FK_Event_Direction">
+            <End Role="Direction" EntitySet="Direction" />
+            <End Role="Event" EntitySet="Event" />
+          </AssociationSet>
           <AssociationSet Name="FK_Jury_Direction" Association="Self.FK_Jury_Direction">
             <End Role="Direction" EntitySet="Direction" />
             <End Role="Jury" EntitySet="Jury" />
@@ -808,23 +826,7 @@
             <End Role="Gender" EntitySet="Gender" />
             <End Role="Participant" EntitySet="Participant" />
           </AssociationSet>
-          <AssociationSet Name="FK_Event_Direction" Association="user22Model.FK_Event_Direction">
-            <End Role="Direction" EntitySet="Direction" />
-            <End Role="Event" EntitySet="Event" />
-          </AssociationSet>
         </EntityContainer>
-        <Association Name="FK_Event_Direction">
-          <End Type="user22Model.Direction" Role="Direction" Multiplicity="0..1" />
-          <End Type="user22Model.Event" Role="Event" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Direction">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Event">
-              <PropertyRef Name="DirectionId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -871,13 +873,14 @@
           <EntitySetMapping Name="Event">
             <EntityTypeMapping TypeName="user22Model.Event">
               <MappingFragment StoreEntitySet="Event">
-                <ScalarProperty Name="DirectionId" ColumnName="DirectionId" />
+                <ScalarProperty Name="Logo" ColumnName="Logo" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="Days" ColumnName="Days" />
                 <ScalarProperty Name="CityId" ColumnName="CityId" />
                 <ScalarProperty Name="OrganizerId" ColumnName="OrganizerId" />
+                <ScalarProperty Name="DirectionId" ColumnName="DirectionId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

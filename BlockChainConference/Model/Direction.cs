@@ -16,21 +16,16 @@ namespace BlockChainConference.Model
     {
         public Direction()
         {
+            this.Event = new HashSet<Event>();
             this.Jury = new HashSet<Jury>();
             this.Moderator = new HashSet<Moderator>();
-            this.Event = new HashSet<Event>();
         }
-
-        public Direction(string name)
-        {
-            Name = name;
-        }
-
+    
         public int Id { get; set; }
         public string Name { get; set; }
     
+        public virtual ICollection<Event> Event { get; set; }
         public virtual ICollection<Jury> Jury { get; set; }
         public virtual ICollection<Moderator> Moderator { get; set; }
-        public virtual ICollection<Event> Event { get; set; }
     }
 }

@@ -66,6 +66,54 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Model\Activity.cs">
+      <DependentUpon>ConferenceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\City.cs">
+      <DependentUpon>ConferenceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ConferenceModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ConferenceModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ConferenceModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ConferenceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ConferenceModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ConferenceModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Country.cs">
+      <DependentUpon>ConferenceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Direction.cs">
+      <DependentUpon>ConferenceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Event.cs">
+      <DependentUpon>ConferenceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EventParticipant.cs">
+      <DependentUpon>ConferenceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Gender.cs">
+      <DependentUpon>ConferenceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Jury.cs">
+      <DependentUpon>ConferenceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Moderator.cs">
+      <DependentUpon>ConferenceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Organizer.cs">
+      <DependentUpon>ConferenceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Participant.cs">
+      <DependentUpon>ConferenceModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Views\Windows\AuthorisationWindow.xaml.cs">
       <DependentUpon>AuthorisationWindow.xaml</DependentUpon>
     </Compile>
@@ -74,6 +122,9 @@
     </Compile>
     <Compile Include="Views\Windows\CAPTCHAWindow.xaml.cs">
       <DependentUpon>CAPTCHAWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Windows\EventInfoWIndow.xaml.cs">
+      <DependentUpon>EventInfoWIndow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Windows\EventsWindow.xaml.cs">
       <DependentUpon>EventsWindow.xaml</DependentUpon>
@@ -85,54 +136,6 @@
   <ItemGroup>
     <Compile Include="AppData\AuthoriseHelper.cs" />
     <Compile Include="AppData\MessageBoxHelper.cs" />
-    <Compile Include="Model\Activity.cs">
-      <DependentUpon>BlockchainConferenceModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\BlockchainConferenceModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BlockchainConferenceModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\BlockchainConferenceModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BlockchainConferenceModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\BlockchainConferenceModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BlockchainConferenceModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Model\City.cs">
-      <DependentUpon>BlockchainConferenceModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Country.cs">
-      <DependentUpon>BlockchainConferenceModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Direction.cs">
-      <DependentUpon>BlockchainConferenceModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Event.cs">
-      <DependentUpon>BlockchainConferenceModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\EventParticipant.cs">
-      <DependentUpon>BlockchainConferenceModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Gender.cs">
-      <DependentUpon>BlockchainConferenceModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Jury.cs">
-      <DependentUpon>BlockchainConferenceModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Moderator.cs">
-      <DependentUpon>BlockchainConferenceModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Organizer.cs">
-      <DependentUpon>BlockchainConferenceModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Participant.cs">
-      <DependentUpon>BlockchainConferenceModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -150,12 +153,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="Model\BlockchainConferenceModel.edmx">
+    <EntityDeploy Include="Model\ConferenceModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>BlockchainConferenceModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>ConferenceModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Model\BlockchainConferenceModel.edmx.diagram">
-      <DependentUpon>BlockchainConferenceModel.edmx</DependentUpon>
+    <None Include="Model\ConferenceModel.edmx.diagram">
+      <DependentUpon>ConferenceModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -167,23 +170,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Model\BlockchainConferenceModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>BlockchainConferenceModel.Context.cs</LastGenOutput>
-      <DependentUpon>BlockchainConferenceModel.edmx</DependentUpon>
-    </Content>
-    <Content Include="Model\BlockchainConferenceModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>BlockchainConferenceModel.edmx</DependentUpon>
-      <LastGenOutput>BlockchainConferenceModel.cs</LastGenOutput>
-    </Content>
     <Resource Include="Resources\graphic-noise.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Views\OrganizeViews\" />
     <Folder Include="Views\Pages\" />
   </ItemGroup>
   <ItemGroup>
@@ -219,6 +211,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Windows\EventInfoWIndow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Windows\EventsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -227,6 +223,18 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Model\ConferenceModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ConferenceModel.edmx</DependentUpon>
+      <LastGenOutput>ConferenceModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model\ConferenceModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ConferenceModel.edmx</DependentUpon>
+      <LastGenOutput>ConferenceModel.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

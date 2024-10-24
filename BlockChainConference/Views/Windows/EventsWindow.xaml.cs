@@ -27,25 +27,23 @@ namespace BlockChainConference.Views.Windows
         {
             InitializeComponent();
             EventsLb.ItemsSource = _context.Event.ToList();
-            directions.Insert(0, new Direction(Name = "Все направления"));
+            directions.Insert(0, new Direction() { Name = "Все направления"});
             DirectionCmb.ItemsSource = directions;
             DirectionCmb.DisplayMemberPath = "Name";
         }
 
-        private void EventsLv_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-
-        }
-
         private void DirectionCmb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            events = _context.Event.ToList();
             if (DirectionCmb.SelectedIndex == 0)
             {
                 events = _context.Event.ToList();
+                EventsLb.ItemsSource = events;
             }
             else
             {
-                events = events.Where(ev => ev.Direction == DirectionCmb.SelectedItem).ToList();
+                events = events.Where(ev => ev.Direction == DirectionCmb.SelectedItem as Direction).ToList();
+                EventsLb.ItemsSource = events;
             }
         }
 
@@ -54,6 +52,12 @@ namespace BlockChainConference.Views.Windows
             AuthorisationWindow authorisationWindow = new AuthorisationWindow();
             authorisationWindow.Show();
             Close();
+        }
+
+        private void EventsLb_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            EventInfoWIndow eventInfoWIndow = new EventInfoWIndow(EventsLb.SelectedItem as Event);
+            eventInfoWIndow.ShowDialog();
         }
     }
 }

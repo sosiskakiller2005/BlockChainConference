@@ -27,13 +27,14 @@ namespace BlockChainConference.Model
         public int Days { get; set; }
         public int CityId { get; set; }
         public Nullable<int> OrganizerId { get; set; }
-        public Nullable<int> DirectionId { get; set; }
+        public int DirectionId { get; set; }
+        public string Logo { get; set; }
     
         public virtual ICollection<Activity> Activity { get; set; }
         public virtual City City { get; set; }
+        public virtual Direction Direction { get; set; }
         public virtual Organizer Organizer { get; set; }
         public virtual ICollection<EventParticipant> EventParticipant { get; set; }
         public virtual ICollection<Moderator> Moderator { get; set; }
-        public virtual Direction Direction { get; set; }
     }
 }
