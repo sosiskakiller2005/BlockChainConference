@@ -45,11 +45,11 @@ namespace BlockChainConference.AppData
                             selectedOrg = org;
                             return true;
                         }
-                        else
-                        {
-                            MessageBoxHelper.Error("Неправильно введен логин или пароль");
-                            return false;
-                        }
+                    }
+                    if (selectedOrg == null)
+                    {
+                        MessageBoxHelper.Error("Неправильно введен логин или пароль");
+                        return false;
                     }
                 }
                 else if (role == "Модератор")

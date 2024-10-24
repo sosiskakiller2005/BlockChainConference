@@ -114,6 +114,9 @@
     <Compile Include="Model\Participant.cs">
       <DependentUpon>ConferenceModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Views\OrganizerWindows\OrganizerWindow.xaml.cs">
+      <DependentUpon>OrganizerWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Windows\AuthorisationWindow.xaml.cs">
       <DependentUpon>AuthorisationWindow.xaml</DependentUpon>
     </Compile>
@@ -128,6 +131,9 @@
     </Compile>
     <Compile Include="Views\Windows\EventsWindow.xaml.cs">
       <DependentUpon>EventsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Windows\ProfileWIndow.xaml.cs">
+      <DependentUpon>ProfileWIndow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Windows\SignUpWindow.xaml.cs">
       <DependentUpon>SignUpWindow.xaml</DependentUpon>
@@ -199,6 +205,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\OrganizerWindows\OrganizerWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Windows\AuthorisationWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -216,6 +226,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Windows\EventsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Windows\ProfileWIndow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

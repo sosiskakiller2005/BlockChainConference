@@ -23,14 +23,22 @@ namespace BlockChainConference.Model
         public string Lastname { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
+        public string Fullname
+        {
+            get
+            {
+                return Lastname + " " + Name + " " + Surname;
+            }
+        }
         public string Email { get; set; }
         public System.DateTime DateOfBirth { get; set; }
-        public int CountryId { get; set; }
+        public string CountryId { get; set; }
         public string Phone { get; set; }
         public string Password { get; set; }
         public string Photo { get; set; }
         public int GenderId { get; set; }
     
+        public virtual Country Country { get; set; }
         public virtual ICollection<Event> Event { get; set; }
         public virtual Gender Gender { get; set; }
     }

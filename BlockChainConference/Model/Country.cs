@@ -18,6 +18,7 @@ namespace BlockChainConference.Model
         {
             this.Jury = new HashSet<Jury>();
             this.Moderator = new HashSet<Moderator>();
+            this.Organizer = new HashSet<Organizer>();
             this.Participant = new HashSet<Participant>();
         }
     
@@ -28,6 +29,7 @@ namespace BlockChainConference.Model
     
         public virtual ICollection<Jury> Jury { get; set; }
         public virtual ICollection<Moderator> Moderator { get; set; }
+        public virtual ICollection<Organizer> Organizer { get; set; }
         public virtual ICollection<Participant> Participant { get; set; }
     }
 }

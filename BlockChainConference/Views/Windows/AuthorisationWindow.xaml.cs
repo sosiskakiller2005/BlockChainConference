@@ -1,5 +1,6 @@
 ﻿using BlockChainConference.AppData;
 using BlockChainConference.Model;
+using BlockChainConference.Views.OrganizerWindows;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,7 +39,9 @@ namespace BlockChainConference.Views.Windows
                 {
                     if (RoleCmb.SelectedIndex == 0)
                     {
-
+                        OrganizerWindow organizerWindow = new OrganizerWindow(AuthoriseHelper.selectedOrg);
+                        organizerWindow.Show();
+                        Close();
                     }
                 }
                 
