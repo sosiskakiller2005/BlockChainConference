@@ -1,8 +1,10 @@
-﻿using BlockChainConference.Model;
+﻿using BlockChainConference.AppData;
+using BlockChainConference.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -26,6 +28,8 @@ namespace BlockChainConference.Views.OrganizerWindows
         public NewEventWindow(Organizer selectedOrganizer)
         {
             InitializeComponent();
+            _selectedOrganizer = selectedOrganizer;
+
             JuryCmb1.ItemsSource = _context.Jury.ToList();
             JuryCmb1.DisplayMemberPath = "Email";
             JuryCmb2.ItemsSource = _context.Jury.ToList();
@@ -38,6 +42,10 @@ namespace BlockChainConference.Views.OrganizerWindows
             DirectionCmb.ItemsSource = _context.Direction.ToList();
             DirectionCmb.DisplayMemberPath = "Name";
         }
+        /// <summary>
+        /// Добавляет одну строку активности.
+        /// </summary>
+        /// <returns></returns>
         private static StackPanel AddRow()
         {
             StackPanel newRow = new StackPanel() { Name = "Row" + stackPanels.Children.Count, Orientation = Orientation.Horizontal };
@@ -69,6 +77,9 @@ namespace BlockChainConference.Views.OrganizerWindows
             UpdateButtons();
         }
 
+        /// <summary>
+        /// Обновляет доступность кнопок удаление и добавления активности.
+        /// </summary>
         private void UpdateButtons()
         {
             int childrenCount = JuryGrid.Children.Count;
@@ -92,34 +103,59 @@ namespace BlockChainConference.Views.OrganizerWindows
 
         private void OkBtn_Click(object sender, RoutedEventArgs e)
         {
-            Event newEvent = new Event()
+            try
             {
-                Name = EventNameTb.Text,
-                Date = (DateTime)EventDateDp.SelectedDate,
-                Direction = DirectionCmb.SelectedItem as Direction
-            };
-            _context.Event.Add(newEvent);
-
-            List<StackPanel> rows = new List<StackPanel>();
-            for (int i = 0; i < JuryGrid.Children.Count; i++)
-            {
-                rows.Add((StackPanel)JuryGrid.Children[i]);
-            }
-            for (int i = 0; i < rows.Count; i++)
-            {
-                if (rows[i].Children.GetType().Equals(Border ))
+                Event newEvent = new Event()
                 {
+                    Name = EventNameTb.Text,
+                    Date = (DateTime)EventDateDp.SelectedDate,
+                    Direction = DirectionCmb.SelectedItem as Direction,
+                    City = CityCmb.SelectedItem as City,
+                    Days = Convert.ToInt32(DaysTb.Text),
+                    Organizer = _selectedOrganizer
 
-                }
-                Activity newActivity = new Activity()
-                {
-                    Name = (rows[i].Children[0] as TextBox).Text,
-                    Jury = (rows[i].Children[2] as ComboBox).SelectedItem as Jury,
-                    Event = newEvent
                 };
-                _context.Activity.Add(newActivity);
+                _context.Event.Add(newEvent);
+
+                //Добавление всех строк активностей в массив.
+                List<StackPanel> rows = new List<StackPanel>();
+                for (int i = 0; i < JuryGrid.Children.Count; i++)
+                {
+                    if (i == 0 || i %2 == 0)
+                    {
+                        rows.Add((StackPanel)JuryGrid.Children[i]);
+                    }
+                }
+                //Формирование Activity из каждой строки.
+                for (int i = 0; i < rows.Count; i++)
+                {
+                    Activity newActivity = new Activity()
+                    {
+                        Name = (rows[i].Children[0] as TextBox).Text,
+                        Jury = (rows[i].Children[2] as ComboBox).SelectedItem as Jury,
+                        Event = newEvent,
+                    };
+                    _context.Activity.Add(newActivity);
+                }
+                _context.SaveChanges();
+                MessageBoxHelper.Information("Мероприятие добавлено.");
+                DialogResult = true;
+                Close();
             }
-            _context.SaveChanges();
+            catch (InvalidOperationException)
+            {
+                MessageBoxHelper.Error("Заполните все поля для ввода.");
+            }
+        }
+
+        private void DaysTb_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = !IsTextAllowed(e.Text);
+        }
+        private static readonly Regex _regex = new Regex("[^0-9.-]+"); //regex that matches disallowed text
+        private static bool IsTextAllowed(string text)
+        {
+            return !_regex.IsMatch(text);
         }
     }
 }

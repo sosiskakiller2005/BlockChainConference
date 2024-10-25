@@ -84,14 +84,17 @@ namespace BlockChainConference.Views.Windows
         private void ProfileHl_Click(object sender, RoutedEventArgs e)
         {
             ProfileWIndow profileWIndow = new ProfileWIndow(_selectedUser);
-            profileWIndow.Show();
-            Close();
+            profileWIndow.ShowDialog();
         }
 
         private void NewEventBtn_Click(object sender, RoutedEventArgs e)
         {
             NewEventWindow newEventWindow = new NewEventWindow(_selectedUser);
-            newEventWindow.ShowDialog();
+            if (newEventWindow.ShowDialog() == true)
+            {
+                EventsLb.ItemsSource = App.GetContext().Event.ToList();
+            }
+
         }
     }
 }
