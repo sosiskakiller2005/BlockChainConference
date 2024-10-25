@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BlockChainConference.Views.OrganizerWindows"
         mc:Ignorable="d"
-        Title="Добавление мероприятия" SizeToContent="WidthAndHeight" MinHeight="600">
+        Title="Добавление мероприятия" SizeToContent="WidthAndHeight" MinHeight="600" WindowStartupLocation="CenterScreen">
     <StackPanel Margin="10">
         <TextBlock Text="Добавить мероприятие"/>
         
@@ -28,6 +28,14 @@
         <Border Height="10"/>
 
         <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Направление"/>
+            <Border Width="10"/>
+            <ComboBox Name="DirectionCmb"/>
+        </StackPanel>
+        
+        <Border Height="10"/>
+
+        <StackPanel Orientation="Horizontal">
             <TextBlock Text="Город"/>
             <Border Width="10"/>
             <ComboBox Name="CityCmb" />
@@ -36,22 +44,43 @@
         <Border Height="10"/>
 
         <StackPanel Orientation="Horizontal">
-            <TextBlock Text="Активности"/>
-            <Border Width="50"/>
             <TextBlock Text="Наименование"/>
-            <Border Width="50"/>
-            <TextBlock Text="Время"/>
-            <Border Width="50"/>
+            <Border Width="100"/>
             <TextBlock Text="Жюри"/>
         </StackPanel>
 
         <StackPanel Name="JuryGrid">
             <StackPanel Orientation="Horizontal">
-                <TextBox Name="EventName1"/>
+                <TextBox Name="EventNameTb1"/>
                 <Border Width="20"/>
                 <ComboBox Name="JuryCmb1"/>
-                
             </StackPanel>
+                <Border Height="20"/>
+
+
+            <StackPanel Orientation="Horizontal">
+                <TextBox Name="EventNameTb2"/>
+                <Border Width="20"/>
+                <ComboBox Name="JuryCmb2"/>
+            </StackPanel>
+                <Border Height="20"/>
+            
+            <StackPanel Orientation="Horizontal">
+                <TextBox Name="EventName3Tb"/>
+                <Border Width="20"/>
+                <ComboBox Name="JuryCmb3"/>
+            </StackPanel>
+                <Border Height="20"/>
+        </StackPanel>
+
+        <Border Height="20"/>
+        
+        <StackPanel Orientation="Horizontal">
+            <Border Width="100"/>
+            <Button Name="AddRowBtn" Click="AddRowBtn_Click" Content="+" Width="50" />
+            <Border Width="100"/>
+            <Button Name="DeleteROwBtn" Click="DeleteROwBtn_Click" Content="-" Width="50" Visibility="Collapsed"/>
+            <Button Name="OkBtn" Click="OkBtn_Click" Content="Ок" HorizontalAlignment="Right" Width="50"/>
         </StackPanel>
     </StackPanel>
 </Window>

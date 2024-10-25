@@ -5,4 +5,7 @@
         <Setter Property="Height" Value="40" />
         <Setter Property="Width" Value="200" />
     </Style>
+    <Style TargetType="DatePickerTextBox">
+        <Setter Property="FontSize" Value="25" />
+    </Style>
 </ResourceDictionary>
