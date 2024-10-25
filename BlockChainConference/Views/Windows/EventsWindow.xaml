@@ -17,6 +17,7 @@
         <TextBlock ><Hyperlink Name="ProfileHl" Click="ProfileHl_Click"><TextBlock Name="ProfileTbl"></TextBlock></Hyperlink></TextBlock>
         <TextBlock Name="SignInTbl"><Hyperlink Name="SignInHL" Click="SignInHL_Click">Войти в аккаунт</Hyperlink></TextBlock>
         <ComboBox Name="DirectionCmb" Grid.Row="2" SelectionChanged="DirectionCmb_SelectionChanged" VirtualizingPanel.ScrollUnit="Item"/>
+        <Button Name="NewEventBtn" Content="Добавить" Click="NewEventBtn_Click" Grid.Row="2" Margin="600 0 0 0"/>
         <StackPanel Grid.Row="4">
             <ListBox Name="EventsLb" Width="1200" HorizontalAlignment="Center" VirtualizingPanel.ScrollUnit="Pixel" Height="500" ScrollViewer.HorizontalScrollBarVisibility="Disabled" MouseDoubleClick="EventsLb_MouseDoubleClick">
                 <ListBox.ItemTemplate>

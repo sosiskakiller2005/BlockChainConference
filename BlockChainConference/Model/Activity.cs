@@ -16,7 +16,7 @@ namespace BlockChainConference.Model
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public System.DateTime Time { get; set; }
+        public Nullable<System.DateTime> Time { get; set; }
         public int EventId { get; set; }
         public int JuryId { get; set; }
     

@@ -1,5 +1,6 @@
 ﻿using BlockChainConference.AppData;
 using BlockChainConference.Model;
+using BlockChainConference.Views.OrganizerWindows;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,6 +35,7 @@ namespace BlockChainConference.Views.Windows
             DirectionCmb.DisplayMemberPath = "Name";
             ProfileTbl.Visibility = Visibility.Collapsed;
             SignInTbl.Visibility = Visibility.Visible;
+            NewEventBtn.Visibility = Visibility.Collapsed;
         }
         
         public EventsWindow(Organizer selectedUser)
@@ -47,6 +49,7 @@ namespace BlockChainConference.Views.Windows
             ProfileTbl.Visibility = Visibility.Visible;
             SignInTbl.Visibility = Visibility.Collapsed;
             ProfileTbl.Text = AuthoriseHelper.selectedOrg.Fullname;
+            NewEventBtn.Visibility = Visibility.Visible;
         }
 
         private void DirectionCmb_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -83,6 +86,12 @@ namespace BlockChainConference.Views.Windows
             ProfileWIndow profileWIndow = new ProfileWIndow(_selectedUser);
             profileWIndow.Show();
             Close();
+        }
+
+        private void NewEventBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NewEventWindow newEventWindow = new NewEventWindow(_selectedUser);
+            newEventWindow.ShowDialog();
         }
     }
 }

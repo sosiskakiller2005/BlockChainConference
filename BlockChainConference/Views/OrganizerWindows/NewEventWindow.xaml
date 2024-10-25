@@ -1,0 +1,57 @@
+﻿<Window x:Class="BlockChainConference.Views.OrganizerWindows.NewEventWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BlockChainConference.Views.OrganizerWindows"
+        mc:Ignorable="d"
+        Title="Добавление мероприятия" SizeToContent="WidthAndHeight" MinHeight="600">
+    <StackPanel Margin="10">
+        <TextBlock Text="Добавить мероприятие"/>
+        
+        <Border Height="10"/>
+        
+        <StackPanel Orientation="Horizontal" Grid.Row="1">
+            <TextBlock Text="Начало"/>
+            <Border Width="10"/>
+            <DatePicker Name="EventDateDp"/>
+        </StackPanel>
+        
+        <Border Height="10"/>
+
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Название"/>
+            <Border Width="10"/>
+            <TextBox Name="EventNameTb"/>
+        </StackPanel>
+        
+        <Border Height="10"/>
+
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Город"/>
+            <Border Width="10"/>
+            <ComboBox Name="CityCmb" />
+        </StackPanel>
+        
+        <Border Height="10"/>
+
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Активности"/>
+            <Border Width="50"/>
+            <TextBlock Text="Наименование"/>
+            <Border Width="50"/>
+            <TextBlock Text="Время"/>
+            <Border Width="50"/>
+            <TextBlock Text="Жюри"/>
+        </StackPanel>
+
+        <StackPanel Name="JuryGrid">
+            <StackPanel Orientation="Horizontal">
+                <TextBox Name="EventName1"/>
+                <Border Width="20"/>
+                <ComboBox Name="JuryCmb1"/>
+                
+            </StackPanel>
+        </StackPanel>
+    </StackPanel>
+</Window>
