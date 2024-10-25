@@ -37,7 +37,9 @@ namespace BlockChainConference.Views.OrganizerWindows
 
         private void EventsBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            EventsWindow eventsWindow = new EventsWindow(_selectedUser);
+            eventsWindow.Show();
+            Close();
         }
 
         private void ParticipantsBtn_Click(object sender, RoutedEventArgs e)

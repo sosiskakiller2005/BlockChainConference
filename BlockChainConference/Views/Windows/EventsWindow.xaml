@@ -14,8 +14,8 @@
             <RowDefinition Height="20" />
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
-        <TextBlock><Hyperlink Name="SignInHL" Click="SignInHL_Click">Войти в аккаунт</Hyperlink></TextBlock>
-        <TextBlock Name="UserTbl"/>
+        <TextBlock ><Hyperlink Name="ProfileHl" Click="ProfileHl_Click"><TextBlock Name="ProfileTbl"></TextBlock></Hyperlink></TextBlock>
+        <TextBlock Name="SignInTbl"><Hyperlink Name="SignInHL" Click="SignInHL_Click">Войти в аккаунт</Hyperlink></TextBlock>
         <ComboBox Name="DirectionCmb" Grid.Row="2" SelectionChanged="DirectionCmb_SelectionChanged" VirtualizingPanel.ScrollUnit="Item"/>
         <StackPanel Grid.Row="4">
             <ListBox Name="EventsLb" Width="1200" HorizontalAlignment="Center" VirtualizingPanel.ScrollUnit="Pixel" Height="500" ScrollViewer.HorizontalScrollBarVisibility="Disabled" MouseDoubleClick="EventsLb_MouseDoubleClick">
@@ -34,7 +34,6 @@
                                 <TextBlock Text="{Binding Date, StringFormat={}{0:dd.MM.yyy}}"/>
                                 <Border Height="10"/>
                             </StackPanel>
-
                         </Grid>
                     </DataTemplate>
                 </ListBox.ItemTemplate>

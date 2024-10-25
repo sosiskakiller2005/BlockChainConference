@@ -1,4 +1,5 @@
-﻿using BlockChainConference.Model;
+﻿using BlockChainConference.AppData;
+using BlockChainConference.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,7 @@ namespace BlockChainConference.Views.Windows
         private static ConferenceEntities _context = App.GetContext();
         List<Direction> directions = _context.Direction.ToList();
         List<Event> events = _context.Event.ToList();
+        private Organizer _selectedUser;
         public EventsWindow()
         {
             InitializeComponent();
@@ -30,6 +32,21 @@ namespace BlockChainConference.Views.Windows
             directions.Insert(0, new Direction() { Name = "Все направления"});
             DirectionCmb.ItemsSource = directions;
             DirectionCmb.DisplayMemberPath = "Name";
+            ProfileTbl.Visibility = Visibility.Collapsed;
+            SignInTbl.Visibility = Visibility.Visible;
+        }
+        
+        public EventsWindow(Organizer selectedUser)
+        {
+            InitializeComponent();
+            _selectedUser = selectedUser;
+            EventsLb.ItemsSource = _context.Event.ToList();
+            directions.Insert(0, new Direction() { Name = "Все направления"});
+            DirectionCmb.ItemsSource = directions;
+            DirectionCmb.DisplayMemberPath = "Name";
+            ProfileTbl.Visibility = Visibility.Visible;
+            SignInTbl.Visibility = Visibility.Collapsed;
+            ProfileTbl.Text = AuthoriseHelper.selectedOrg.Fullname;
         }
 
         private void DirectionCmb_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -57,7 +74,15 @@ namespace BlockChainConference.Views.Windows
         private void EventsLb_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             EventInfoWIndow eventInfoWIndow = new EventInfoWIndow(EventsLb.SelectedItem as Event);
-            eventInfoWIndow.ShowDialog();
+            eventInfoWIndow.Show();
+            Close();
+        }
+
+        private void ProfileHl_Click(object sender, RoutedEventArgs e)
+        {
+            ProfileWIndow profileWIndow = new ProfileWIndow(_selectedUser);
+            profileWIndow.Show();
+            Close();
         }
     }
 }
