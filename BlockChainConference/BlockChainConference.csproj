@@ -135,6 +135,9 @@
     <Compile Include="Views\Windows\EventsWindow.xaml.cs">
       <DependentUpon>EventsWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Windows\KanbanWindow.xaml.cs">
+      <DependentUpon>KanbanWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Windows\ProfileWIndow.xaml.cs">
       <DependentUpon>ProfileWIndow.xaml</DependentUpon>
     </Compile>
@@ -237,6 +240,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Windows\EventsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Windows\KanbanWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

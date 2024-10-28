@@ -1,5 +1,6 @@
 ﻿using BlockChainConference.AppData;
 using BlockChainConference.Model;
+using BlockChainConference.Views.Windows;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -156,6 +157,12 @@ namespace BlockChainConference.Views.OrganizerWindows
         private static bool IsTextAllowed(string text)
         {
             return !_regex.IsMatch(text);
+        }
+
+        private void KanbanBtn_Click(object sender, RoutedEventArgs e)
+        {
+            KanbanWindow kanbanWindow = new KanbanWindow();
+            kanbanWindow.ShowDialog();
         }
     }
 }

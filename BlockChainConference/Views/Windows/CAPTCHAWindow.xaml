@@ -8,7 +8,7 @@
         Title="Окно CAPTCHA" SizeToContent="WidthAndHeight"
         WindowStartupLocation="CenterScreen">
     <StackPanel Margin="20">
-        <TextBlock Name="CaptchaTbl" Text="12345" FontSize="30" HorizontalAlignment="Center"> 
+        <TextBlock Name="CaptchaTbl" Text="12345" FontSize="30" HorizontalAlignment="Center" Padding="10 5"> 
             <TextBlock.Background>
                 <ImageBrush ImageSource="/Resources/graphic-noise.png"/>
             </TextBlock.Background>

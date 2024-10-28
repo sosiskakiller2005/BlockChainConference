@@ -19,6 +19,8 @@
             <TextBlock  Text="Дни"/>
             <Border Width="10"/>
             <TextBox Name="DaysTb" PreviewTextInput="DaysTb_PreviewTextInput" Width="70"/>
+            <Border Width="50"/>
+            <Button Name="KanbanBtn" Content="Доска" Click="KanbanBtn_Click"/>
         </StackPanel>
         
         <Border Height="10"/>

@@ -83,8 +83,9 @@ namespace BlockChainConference.Views.Windows
 
         private void ProfileHl_Click(object sender, RoutedEventArgs e)
         {
-            ProfileWIndow profileWIndow = new ProfileWIndow(_selectedUser);
-            profileWIndow.ShowDialog();
+            OrganizerWindow organizerWindow = new OrganizerWindow(_selectedUser);
+            organizerWindow.Show();
+            Close();
         }
 
         private void NewEventBtn_Click(object sender, RoutedEventArgs e)
