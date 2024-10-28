@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BlockChainConference.Views.Windows"
         mc:Ignorable="d"
-        Title="EventInfoWIndow" MinWidth="500" SizeToContent="WidthAndHeight">
+        Title="Инофрамция о мероприятии" WindowStartupLocation="CenterScreen" MinWidth="500" SizeToContent="WidthAndHeight">
     <Grid Margin="10" Name="EventGrid">
         <Grid.RowDefinitions>
             <RowDefinition Height=".3*" />

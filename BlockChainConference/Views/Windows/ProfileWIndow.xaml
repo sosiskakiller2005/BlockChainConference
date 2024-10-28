@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BlockChainConference.Views.Windows"
         mc:Ignorable="d"
-        Title="Окно профиля" Height="500" Width="1200">
+        Title="Окно профиля" Height="500" Width="1200" WindowStartupLocation="CenterScreen">
     <Grid Name="ProfileGrid">
         <Grid.RowDefinitions>
             <RowDefinition Height=".15*" />

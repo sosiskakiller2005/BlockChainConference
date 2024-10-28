@@ -77,8 +77,7 @@ namespace BlockChainConference.Views.Windows
         private void EventsLb_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             EventInfoWIndow eventInfoWIndow = new EventInfoWIndow(EventsLb.SelectedItem as Event);
-            eventInfoWIndow.Show();
-            Close();
+            eventInfoWIndow.ShowDialog();
         }
 
         private void ProfileHl_Click(object sender, RoutedEventArgs e)
